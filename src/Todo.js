@@ -17,12 +17,20 @@ function Todo(){
         setItens([...itens, item])
     }
 
+    function onItemDeleted(item){
+
+        let filteredItens = itens.filter(it=>it.id != item.id)
+
+        setItens(filteredItens);
+
+    }
+
     return (<div className='container'>
                 <h1>Todo</h1>
                 <TodoForm onAddItem={onAddItem}></TodoForm>
                 
 
-                <List itens={itens}></List>
+                <List onItemDeleted={onItemDeleted} itens={itens}></List>
             </div>);
 
 }
