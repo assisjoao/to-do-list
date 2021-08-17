@@ -1,40 +1,57 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import List from './components/List'
 import Item from './components/Item'
 import TodoForm from './components/TodoForm'
 import './Todo.css'
+
+const SAVED_ITEMS = "savedItems"
 
 
 
 
 function Todo(){
 
-    const [itens, setItens] = useState([]);
+    const [items, setItens] = useState([]);
+
+    useEffect(()=>{
+
+        let savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS));
+        if(savedItems){
+            setItens(savedItems);
+        }
+
+    }, [])
+
+    useEffect(()=>{
+
+        localStorage.setItem(SAVED_ITEMS, JSON.stringify(items));
+
+    }, [items])
 
     function onAddItem(text){
 
         let item = new Item(text);
-        setItens([...itens, item])
+        setItens([...items, item])
     }
 
     function onItemDeleted(item){
 
-        let filteredItens = itens.filter(it=>it.id !== item.id)
+        let filteredItems = items.filter(it=>it.id !== item.id)
 
-        setItens(filteredItens);
+        setItens(filteredItems);
 
     }
 
     function onDone(item){
 
-        let updatedItens = itens.map(it=>{
+        let updatedItems = items.map(it=>{
             if(it.id === item.id){
                 it.done = !it.done;
             }
             return it;
         })
 
-        setItens(updatedItens);
+        setItens(updatedItems);
 
     }
 
@@ -43,7 +60,7 @@ function Todo(){
                 <TodoForm onAddItem={onAddItem}></TodoForm>
                 
 
-                <List onDone={onDone} onItemDeleted={onItemDeleted} itens={itens}></List>
+                <List onDone={onDone} onItemDeleted={onItemDeleted} items={items}></List>
             </div>);
 
 }

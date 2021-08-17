@@ -7,7 +7,7 @@ function List(props){
     
 
     return(<ul>
-            {props.itens.map(item=><ListItem key={item.id} item={item} onDone={props.onDone} onItemDeleted={props.onItemDeleted}></ListItem>)}
+            {props.items.map(item=><ListItem key={item.id} item={item} onDone={props.onDone} onItemDeleted={props.onItemDeleted}></ListItem>)}
         </ul>)
 
 }
