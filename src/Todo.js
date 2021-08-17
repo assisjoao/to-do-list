@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import List from './List'
-import Item from './Item'
-import TodoForm from './TodoForm'
+import List from './components/List'
+import Item from './components/Item'
+import TodoForm from './components/TodoForm'
 import './Todo.css'
 
 
@@ -19,7 +19,7 @@ function Todo(){
 
     function onItemDeleted(item){
 
-        let filteredItens = itens.filter(it=>it.id != item.id)
+        let filteredItens = itens.filter(it=>it.id !== item.id)
 
         setItens(filteredItens);
 
