@@ -3,6 +3,7 @@ import List from './components/List'
 import Item from './components/Item'
 import TodoForm from './components/TodoForm'
 import './Todo.css'
+import Modal from './components/Modal'
 
 const SAVED_ITEMS = "savedItems"
 
@@ -56,11 +57,9 @@ function Todo(){
     }
 
     return (<div className='container'>
-                <h1>Todo</h1>
-                <TodoForm onAddItem={onAddItem}></TodoForm>
-                
-
+                <header className='header'><h1>To do</h1><button className='addButton'></button>+</header>
                 <List onDone={onDone} onItemDeleted={onItemDeleted} items={items}></List>
+                <Modal><TodoForm onAddItem={onAddItem}></TodoForm></Modal>
             </div>);
 
 }
