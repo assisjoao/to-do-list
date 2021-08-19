@@ -2,9 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<!-- ## Available Scripts
 
-You can test the To do on: [To do List João](https://assisjoao.github.io/to-do-list/).
+You can test the To do on: [To do List João](https://assisjoao.github.io/to-do-list/). -->
 
 ### How works?
 
